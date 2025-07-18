@@ -1,6 +1,9 @@
 -- Set a blinking cursor
 vim.o.guicursor = 'n-v-c:block,i:ver25-Cursor/lCursor-blinkon600-blinkoff600-blinkwait0'
 
+-- Sets color to column 80
+vim.opt.colorcolumn = '79'
+
 -- Basic autocommands
 local augroup = vim.api.nvim_create_augroup('UserConfig', {})
 
@@ -69,3 +72,34 @@ local function smart_close_buffer()
   end
 end
 vim.keymap.set('n', '<leader>bd', smart_close_buffer, { desc = 'Smart close buffer/tab' })
+
+-- Setup ColorColumn by filetype
+-- vim.api.nvim_create_augroup('ColorcolumnByFT', { clear = true })
+-- vim.api.nvim_create_autocmd('FileType', {
+--   group = 'ColorcolumnByFT',
+--   pattern = { 'python', 'c', 'cpp', 'sh' },
+--   callback = function()
+--     vim.opt_local.colorcolumn = '79'
+--   end,
+-- })
+-- vim.api.nvim_create_autocmd('FileType', {
+--   group = 'ColorcolumnByFT',
+--   pattern = { 'lua', 'rust' },
+--   callback = function()
+--     vim.opt_local.colorcolumn = '100'
+--   end,
+-- })
+-- vim.api.nvim_create_autocmd('FileType', {
+--   group = 'ColorcolumnByFT',
+--   pattern = {
+--     'javascript',
+--     'javascriptreact',
+--     'javascript.jsx',
+--     'typescript',
+--     'typescriptreact',
+--     'typescript.tsx',
+--   },
+--   callback = function()
+--     vim.opt_local.colorcolumn = '120'
+--   end,
+-- })
