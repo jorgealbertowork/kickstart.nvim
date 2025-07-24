@@ -73,6 +73,10 @@ local function smart_close_buffer()
 end
 vim.keymap.set('n', '<leader>bd', smart_close_buffer, { desc = 'Smart close buffer/tab' })
 
+require('nvim-autopairs').setup {
+  disable_filetype = { 'html' },
+}
+
 -- Setup ColorColumn by filetype
 -- vim.api.nvim_create_augroup('ColorcolumnByFT', { clear = true })
 -- vim.api.nvim_create_autocmd('FileType', {
